@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author LUCYLEONOR
@@ -27,21 +29,109 @@ public class Fotos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtF = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        lblT = new javax.swing.JLabel();
+        cmdCalcular = new javax.swing.JButton();
+        cmdRestaurar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fotos");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setText("Fotos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setText("Núm. Fotos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        txtF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 90, -1));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setText("Total a Pagar");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+
+        lblT.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(lblT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 140, 30));
+
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+
+        cmdRestaurar.setText("Restaurar");
+        cmdRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRestaurarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdRestaurar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+
+        String r;
+        double f, t;
+        
+        f = Double.parseDouble(txtF.getText());
+        
+        t = (f * 1500) * 1.16;
+        
+        r = String.valueOf(t);
+        lblT.setText(r);
+
+        
+        
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRestaurarActionPerformed
+
+        txtF.setText("");
+        lblT.setText("");
+        txtF.requestFocusInWindow();
+        
+    }//GEN-LAST:event_cmdRestaurarActionPerformed
+
+    private void txtFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        
+        String r;
+        double f, t;
+        
+        f = Double.parseDouble(txtF.getText());
+        
+        t = (f * 1500) * 1.16;
+        
+        r = String.valueOf(t);
+        lblT.setText(r);
+
+            
+            
+        }
+        
+    }//GEN-LAST:event_txtFKeyPressed
 
     /**
      * @param args the command line arguments
@@ -79,5 +169,13 @@ public class Fotos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JButton cmdRestaurar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblT;
+    private javax.swing.JTextField txtF;
     // End of variables declaration//GEN-END:variables
 }
