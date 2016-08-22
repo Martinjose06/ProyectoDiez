@@ -6,6 +6,7 @@
 package interfaz;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +57,9 @@ public class Fotos extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFKeyTyped(evt);
+            }
         });
         jPanel1.add(txtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 90, -1));
 
@@ -91,17 +95,27 @@ public class Fotos extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
 
-        String r;
-        double f, t;
-        
-        f = Double.parseDouble(txtF.getText());
-        
-        t = (f * 1500) * 1.16;
-        
-        r = String.valueOf(t);
-        lblT.setText(r);
+        if (txtF.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ha Ingresado El Numero De Fotos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtF.requestFocusInWindow();
 
-        
+        } else if (txtF.getText().equalsIgnoreCase("0")) {
+            JOptionPane.showMessageDialog(this, "El Número De Fotos Debe Ser Superior 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtF.requestFocusInWindow();
+            txtF.selectAll();
+        } else {
+
+            String r;
+            double f, t;
+
+            f = Double.parseDouble(txtF.getText());
+
+            t = (f * 1500) * 1.16;
+
+            r = String.valueOf(t);
+            lblT.setText("$ " + r);
+        }
+
         
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -116,22 +130,42 @@ public class Fotos extends javax.swing.JFrame {
     private void txtFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFKeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-        
-        String r;
-        double f, t;
-        
-        f = Double.parseDouble(txtF.getText());
-        
-        t = (f * 1500) * 1.16;
-        
-        r = String.valueOf(t);
-        lblT.setText(r);
 
-            
-            
+            if (txtF.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ha Ingresado El Numero De Fotos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtF.requestFocusInWindow();
+
+            } else if (txtF.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Número De Fotos Debe Ser Superior 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtF.requestFocusInWindow();
+                txtF.selectAll();
+            } else {
+
+                String r;
+                double f, t;
+
+                f = Double.parseDouble(txtF.getText());
+
+                t = (f * 1500) * 1.16;
+
+                r = String.valueOf(t);
+                lblT.setText("$ " + r);
+            }
+
         }
         
     }//GEN-LAST:event_txtFKeyPressed
+
+    private void txtFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtFKeyTyped
 
     /**
      * @param args the command line arguments
